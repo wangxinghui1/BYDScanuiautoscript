@@ -6,15 +6,13 @@ import pandas
 logger = logging.getLogger()
 logger.setLevel(level=logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s-%(filename)s[line:%(lineno)d]-%(levelname)s:%(message)s')
-file_handler = logging.FileHandler('D://byd2.log')
+file_handler = logging.FileHandler('D:\\log\\bydconfigset.log')
 file_handler.setLevel(level=logging.DEBUG)
 file_handler.setFormatter(formatter)
-# stream_handler = logging.StreamHandler()
-# stream_handler.setLevel(level=logging.DEBUG)
-# stream_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
+opensetting = 0
 def setpsdVif():
-    opensetting=0
+    global opensetting
     settingbutton=uiautomation.ButtonControl(AutomationId='bydQWidgetPlatformClass.stackedWidgetPlatfotm.page_Scan.bydQWidgetScanClass.widget.widget_3.widget_6.widget_8.widget_44.widget_46.widget_52.pushButton_bydCT_Setting')
     settingbutton.Click()
     inputpsd=uiautomation.TextControl(AutomationId='bydQWidgetPlatformClass.stackedWidgetPlatfotm.page_Scan.bydQWidgetScanClass.mpPasswordValidation.widget.widget_3.widget_5.label_2')
@@ -24,8 +22,9 @@ def setpsdVif():
         # exit('退出执行测试脚本')
     else:
         print('设置输入密码页面打开成功')
+inputpassword=0
 def inputpassword():
-    inputpassword=0
+    global inputpassword
     inputpass=uiautomation.EditControl(AutomationId='bydQWidgetPlatformClass.stackedWidgetPlatfotm.page_Scan.bydQWidgetScanClass.mpPasswordValidation.widget.widget_3.widget_5.widget_7.lineEdit_bydManagerPassword')
     # inputpass.SendKeys('123')
     inputpass.GetValuePattern().SetValue('123')
@@ -37,8 +36,9 @@ def inputpassword():
         logger.debug('输入密码失败，打开设置页面失败了%s次',inputpassword)
     else:
         print('进入设置页面成功')
+openlocal=0
 def storage():
-    openlocal=0
+    global openlocal
     browsebutton=uiautomation.ButtonControl(AutomationId='bydQWidgetPlatformClass.mpUserSettingName.widget.widget_3.widget_4.widget_7.widget_15.pushButton_bydSetting_PathView')
     browsebutton.Click()
     if uiautomation.EditControl(AutomationId='1152').Exists()!=True:

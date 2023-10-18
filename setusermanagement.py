@@ -2,10 +2,10 @@ import time
 import pandas as pd
 import uiautomation
 import logging
-logger = logging.getLogger('test')
+logger = logging.getLogger('setusertest')
 logger.setLevel(level=logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s-%(filename)s[line:%(lineno)d]-%(levelname)s:%(message)s')
-file_handler = logging.FileHandler('D:\\log\\s6.log')
+file_handler = logging.FileHandler('D:\\log\\bydconfigsetuser.log')
 file_handler.setLevel(level=logging.DEBUG)
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
@@ -20,8 +20,8 @@ class setusernameManagement:
         self.username=uiautomation.EditControl(AutomationId='bydQWidgetPlatformClass.mpUserSettingName.widget.widget_3.widget_5.widget_18.widget_20.widget_24.widget_25.widget_27.lineEdit_bydSerring_UserName')
         self.saveas=uiautomation.ButtonControl(AutomationId='bydQWidgetPlatformClass.mpUserSettingName.widget.widget_3.widget_5.widget_18.widget_20.widget_24.widget_26.pushButton_bydSetting_Other')
         self.repeat=uiautomation.TextControl(Name= '该账号已存在，无法创建！')
-        self.table= uiautomation.TableControl(searchDepth=12,AutomationId="bydQWidgetPlatformClass.mpUserSettingName.widget.widget_3.widget_5.widget_18.widget_19.widget_22.tableWidget_bydSetting_UserList")
-        self.delete = uiautomation.ButtonControl(AutomationId='bydQWidgetPlatformClass.mpUserSettingName.widget.widget_3.widget_5.widget_18.widget_20.widget_24.widget_26.pushButton_bydSetting_Delete')
+        self.table=uiautomation.TableControl(searchDepth=12,AutomationId="bydQWidgetPlatformClass.mpUserSettingName.widget.widget_3.widget_5.widget_18.widget_19.widget_22.tableWidget_bydSetting_UserList")
+        self.delete=uiautomation.ButtonControl(AutomationId='bydQWidgetPlatformClass.mpUserSettingName.widget.widget_3.widget_5.widget_18.widget_20.widget_24.widget_26.pushButton_bydSetting_Delete')
         self.save=uiautomation.ButtonControl(AutomationId='bydQWidgetPlatformClass.mpUserSettingName.widget.widget_3.widget_5.widget_18.widget_20.widget_24.widget_26.pushButton_bydSetting_Save')
     def newUser(self, account, password, confirmpassword, username):
         self.account.GetValuePattern().SetValue(' ')

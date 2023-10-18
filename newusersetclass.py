@@ -54,7 +54,7 @@ class usernameManagement:
             currentvalue = df.iloc[i].values[0]
             nextvalue = df.iloc[i].values[3]
             print('打印文件读取的currentvalue:',currentvalue)
-            print('打印文件读取的nextvalue:',nextvalue)
+            print('打印文件读取的nextvalue:',nextvalue)-4
             if j<len(self.userlistinfo):
                 self.confirmUser(self.userlistinfo[j:],currentvalue,nextvalue)
                 j+=2

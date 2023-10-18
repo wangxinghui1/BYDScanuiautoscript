@@ -11,6 +11,13 @@ file_handler.setLevel(level=logging.DEBUG)
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 #1.单击一次打开门锁不再次关闭门锁
+signalsaftylock1 = 0
+signalsaftylock2 = 0
+signalsaftylock3=0
+safty1and2lock=0
+safty1and3lock=0
+safty2and3lock=0
+safty1an2and3lock=0
 def openSafetyLock():
     #1.关闭设置页面安全锁1图标颜色,坐标(537, 516)，RGB(79, 231, 194)
     #2.打开设置页面安全锁1图标颜色,坐标(537, 516)，RGB(113, 155, 219)
@@ -56,11 +63,12 @@ def openSafetyLock():
     Scanbutton.Click()
     tubeexposePixel = pyautogui.pixelMatchesColor(357, 61, (228, 249, 2))
     exposurePiexl = pyautogui.pixelMatchesColor(1023, 66, (228, 249, 2))
-    signalsaftylock1=0
+    global signalsaftylock1
     #此时曝光了，颜色为黄色
     if tubeexposePixel & exposurePiexl==True:
         signalsaftylock1+=1
         print('安全锁1机制出现错误，此时不可被曝光')
+        pyautogui.screenshot('D:\\BYDscanTest\\bydscript\\Data\\image\\generateimage'+str(signalsaftylock1)+'.png')
         logger.debug('安全锁1机制出现错误，此时不可被曝光,但曝光了%s次',signalsaftylock1)
         # exit('安全锁1机制出现错误，此时不可被曝光')
     else:
@@ -87,9 +95,10 @@ def openSafetyLock():
     Scanbutton.Click()
     tubeexposePixel = pyautogui.pixelMatchesColor(357, 61, (228, 249, 2))
     exposurePiexl = pyautogui.pixelMatchesColor(1023, 66, (228, 249, 2))
-    signalsaftylock2=0
+    global signalsaftylock2
     if tubeexposePixel & exposurePiexl==True:
         signalsaftylock2+=1
+        pyautogui.screenshot('D:\\BYDscanTest\\bydscript\\Data\\image\\generateimage'+str(signalsaftylock2)+'.png')
         print('安全锁2机制出现错误，此时不可被曝光')
         logger.debug('安全锁1机制出现错误，此时不可被曝光,但曝光了%s次',signalsaftylock2)
         # exit('安全锁2机制出现错误，此时不可被曝光')
@@ -117,9 +126,10 @@ def openSafetyLock():
     Scanbutton.Click()
     tubeexposePixel = pyautogui.pixelMatchesColor(357, 61, (228, 249, 2))
     exposurePiexl = pyautogui.pixelMatchesColor(1023, 66, (228, 249, 2))
-    signalsaftylock3=0
+    global signalsaftylock3
     if tubeexposePixel &exposurePiexl==True:
         signalsaftylock3+=1
+        pyautogui.screenshot('D:\\BYDscanTest\\bydscript\\Data\\image\\imagegenerateimage'+str(signalsaftylock3)+'.png')
         print('安全锁3机制出现错误，此时不可被曝光')
         logger.debug('安全锁1机制出现错误，此时不可被曝光,但曝光了%s次',signalsaftylock3)
         # exit('安全锁3机制出现错误，此时不可被曝光')
@@ -148,10 +158,11 @@ def openSafetyLock():
     Scanbutton.Click()
     tubeexposePixel = pyautogui.pixelMatchesColor(357, 61, (228, 249, 2))
     exposurePiexl = pyautogui.pixelMatchesColor(1023, 66, (228, 249, 2))
-    safty1and2lock=0
+    global safty1and2lock
     if tubeexposePixel &exposurePiexl==True:
         print('安全锁1和安全锁2机制出现错误，此时不可被曝光')
         safty1and2lock+=1
+        pyautogui.screenshot('D:\\BYDscanTest\\bydscript\\Data\\image\\generateimage'+str(safty1and2lock)+'.png')
         # exit('安全锁1和安全锁2机制出现错误，此时不可被曝光')
         logger.debug('安全锁1和2机制出现错误，此时不可被曝光,但曝光了%s次',safty1and2lock)
     else:
@@ -179,10 +190,11 @@ def openSafetyLock():
     Scanbutton.Click()
     tubeexposePixel = pyautogui.pixelMatchesColor(357, 61, (228, 249, 2))
     exposurePiexl = pyautogui.pixelMatchesColor(1023, 66, (228, 249, 2))
-    safty1and3lock=0
+    global safty1and3lock
     if tubeexposePixel & exposurePiexl == True:
         safty1and3lock+=1
         print('安全锁1和安全锁3机制出现错误，此时不可被曝光')
+        pyautogui.screenshot('D:\\BYDscanTest\\bydscript\\Data\\image\\generateimage'+str(safty1and3lock)+'.png')
         logger.debug('安全锁1和3机制出现错误，此时不可被曝光,但曝光了%s次',safty1and3lock)
         # exit('安全锁1和安全锁3机制出现错误，此时不可被曝光')
     else:
@@ -210,10 +222,11 @@ def openSafetyLock():
     Scanbutton.Click()
     tubeexposePixel = pyautogui.pixelMatchesColor(357, 61, (228, 249, 2))
     exposurePiexl = pyautogui.pixelMatchesColor(1023, 66, (228, 249, 2))
-    safty2and3lock=0
+    global safty2and3lock
     if tubeexposePixel & exposurePiexl == True:
-        safty1and3lock+=1
+        safty2and3lock+=1
         print('安全锁2和安全锁3机制出现错误，此时不可被曝光')
+        pyautogui.screenshot('D:\\BYDscanTest\\bydscript\\Data\\image\\generateimage'+str(safty2and3lock)+'.png')
         logger.debug('安全锁2和3机制出现错误，此时不可被曝光,但曝光了%s次',safty2and3lock)
         # exit('安全锁2和安全锁3机制出现错误，此时不可被曝光')
     else:
@@ -242,16 +255,24 @@ def openSafetyLock():
     Scanbutton.Click()
     tubeexposePixel = pyautogui.pixelMatchesColor(357, 61, (228, 249, 2))
     exposurePiexl = pyautogui.pixelMatchesColor(1023, 66, (228, 249, 2))
-    safty1an2and3lock=0
+    global safty1an2and3lock
     if tubeexposePixel & exposurePiexl == True:
         safty1an2and3lock+=1
         print('安全锁1,安全锁2和安全锁3机制出现错误，此时不可被曝光')
+        pyautogui.screenshot('D:\\BYDscanTest\\bydscript\\Data\\image\\generateimage'+str(safty1an2and3lock)+'.png')
         logger.debug('安全锁1和2,3机制出现错误，此时不可被曝光,但曝光了%s次',safty1an2and3lock)
         # exit('安全锁1,安全锁2和安全锁3机制出现错误，此时不可被曝光')
     else:
         print('安全锁1,安全锁2和安全锁3已打开，禁止曝光')
 
 #2.单击一次打开门锁后再次关闭门锁
+signalsaftycl1=0
+signalsaftycl2=0
+signalsaftycl3=0
+signalsaftycl1nd2=0
+signalsaftycl1nd3=0
+signalsaftycl2nd3=0
+signalsaftycl1nd2nd3=0
 def closeSafetyLock():
     #1.关闭设置页面安全锁1图标颜色,坐标(537, 516)，RGB(79, 231, 194)
     #2.打开设置页面安全锁1图标颜色,坐标(537, 516)，RGB(113, 155, 219)
@@ -299,11 +320,12 @@ def closeSafetyLock():
     Scanbutton.Click()
     tubeexposePixel = pyautogui.pixelMatchesColor(357, 61, (228, 249, 2))
     exposurePiexl = pyautogui.pixelMatchesColor(1023, 66, (228, 249, 2))
-    signalsaftycl1=0
+    global signalsaftycl1
     if tubeexposePixel & exposurePiexl!=True:
         signalsaftycl1+=1
         print('设置页面安全锁1打开失败')
         print('设置页面安全锁1打开成功后再次关闭失败，此时不可被曝光')
+        pyautogui.screenshot('D:\\BYDscanTest\\bydscript\\Data\\image\\generateimage'+str(signalsaftycl1)+'.png')
         logger.debug('安全锁1机制出现错误，此时不可被曝光,但曝光了%s次',signalsaftycl1)
         # exit()
     else:
@@ -332,11 +354,12 @@ def closeSafetyLock():
     Scanbutton.Click()
     tubeexposePixel = pyautogui.pixelMatchesColor(357, 61, (228, 249, 2))
     exposurePiexl = pyautogui.pixelMatchesColor(1023, 66, (228, 249, 2))
-    signalsaftycl2=0
+    global signalsaftycl2
     if tubeexposePixel & exposurePiexl!=True:
         signalsaftycl2+=1
         print('设置页面安全锁2打开失败')
         print('设置页面安全锁2打开成功后再次关闭失败，此时不可被曝光')
+        pyautogui.screenshot('D:\\BYDscanTest\\bydscript\\Data\\image\\generateimage'+str(signalsaftycl2)+'.png')
         logger.debug('安全锁2机制出现错误，此时不可被曝光,但曝光了%s次',signalsaftycl2)
         # exit()
     else:
@@ -366,10 +389,11 @@ def closeSafetyLock():
     Scanbutton.Click()
     tubeexposePixel = pyautogui.pixelMatchesColor(357, 61, (228, 249, 2))
     exposurePiexl = pyautogui.pixelMatchesColor(1023, 66, (228, 249, 2))
-    signalsaftycl3=0
+    global signalsaftycl3
     if tubeexposePixel & exposurePiexl!=True:
         signalsaftycl3+=1
         print('设置页面安全锁3打开成功后再次关闭失败，此时不可被曝光')
+        pyautogui.screenshot('D:\\BYDscanTest\\bydscript\\Data\\image\\generateimage'+str(signalsaftycl3)+'.png')
         logger.debug('安全锁3机制出现错误，此时不可被曝光,但曝光了%s次',signalsaftycl3)
         # exit()
     else:
@@ -401,10 +425,11 @@ def closeSafetyLock():
     Scanbutton.Click()
     tubeexposePixel = pyautogui.pixelMatchesColor(357, 61, (228, 249, 2))
     exposurePiexl = pyautogui.pixelMatchesColor(1023, 66, (228, 249, 2))
-    signalsaftycl1nd2=0
+    global signalsaftycl1nd2
     if tubeexposePixel & exposurePiexl!=True:
         signalsaftycl1nd2+=1
         print('设置页面门锁1和门锁2打开成功后再次关闭失败，此时不可被曝光')
+        pyautogui.screenshot('D:\\BYDscanTest\\bydscript\\Data\\image\\generateimage'+str(signalsaftycl1nd2)+'.png')
         logger.debug('安全锁1,2机制出现错误，此时不可被曝光,但曝光了%s次',signalsaftycl1nd2)
         # exit()
     else:
@@ -436,10 +461,11 @@ def closeSafetyLock():
     Scanbutton.Click()
     tubeexposePixel = pyautogui.pixelMatchesColor(357, 61, (228, 249, 2))
     exposurePiexl = pyautogui.pixelMatchesColor(1023, 66, (228, 249, 2))
-    signalsaftycl1nd3=0
+    global signalsaftycl1nd3
     if tubeexposePixel & exposurePiexl!=True:
         signalsaftycl1nd3+=1
         print('设置页面门锁1和门锁3打开成功后再次关闭失败，此时不可被曝光')
+        pyautogui.screenshot('D:\\BYDscanTest\\bydscript\\Data\\image\\generateimage'+str(signalsaftycl1nd3)+'.png')
         logger.debug('安全锁1,3机制出现错误，此时不可被曝光,但曝光了%s次',signalsaftycl1nd3)
         # exit()
     else:
@@ -475,6 +501,7 @@ def closeSafetyLock():
     if tubeexposePixel & exposurePiexl!=True:
         signalsaftycl2nd3+=1
         print('设置页面门锁2和门锁3打开成功后再次关闭失败，此时不可被曝光')
+        pyautogui.screenshot('D:\\BYDscanTest\\bydscript\\Data\\image\\generateimage'+str(signalsaftycl2nd3)+'.png')
         logger.debug('安全锁2,3机制出现错误，此时不可被曝光,但曝光了%s次',signalsaftycl2nd3)
         # exit()
     else:
@@ -508,10 +535,11 @@ def closeSafetyLock():
     Scanbutton.Click()
     tubeexposePixel = pyautogui.pixelMatchesColor(357, 61, (228, 249, 2))
     exposurePiexl = pyautogui.pixelMatchesColor(1023, 66, (228, 249, 2))
-    signalsaftycl1nd2nd3=0
+    global signalsaftycl1nd2nd3
     if tubeexposePixel & exposurePiexl != True:
         signalsaftycl1nd2nd3+=1
         print('设置页面安全锁1,安全锁2和门锁3打开成功后再次关闭失败，此时不可被曝光')
+        pyautogui.screenshot('D:\\BYDscanTest\\bydscript\\Data\\image\\generateimage'+str(signalsaftycl1nd2nd3)+'.png')
         logger.debug('安全锁1,2,3机制出现错误，此时不可被曝光,但曝光了%s次',signalsaftycl1nd2nd3)
         # exit()
     else:
